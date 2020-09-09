@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: api-ingress
+  labels:
+    app.kubernetes.io/name: node-express-api
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.image.tag }}
+    app.kubernetes.io/component: node-express-api
+    app.kubernetes.io/part-of: node-express-api
+    app.kubernetes.io/managed-by: helm2
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    ingress.kubernetes.io/hsts: "false"
+spec:
+  rules:
+  - host: api.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: api-service
+          servicePort: 80
+
