@@ -2,5 +2,8 @@ dependencies:
 - name: nginx-ingress
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 1.41.2
-digest: sha256:0ba733014b5bdff88afac93dc120170a085c47ddab95cdfcec5503e15bf83102
-generated: "2020-09-07T23:41:49.795345-07:00"
+- name: mysql
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 1.6.7
+digest: sha256:7dc7561b6342b9c7e6b199a9e17c02d7b4f666b30dd927f2fe79c49b5845a79d
+generated: "2020-09-09T11:53:45.379179-07:00"

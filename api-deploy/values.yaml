@@ -2,7 +2,25 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# api
 replicaCount: 1
-
 image:
   tag: latest
+
+# mysql
+mysql:
+  mysqlDatabase: api_db
+  mysqlUser: mysql-user
+  existingSecret: api-db-pass
+  initializationFiles:
+    1-create-table-users.sql: |-
+      CREATE TABLE users (
+        userID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        firstName VARCHAR(255),
+        lastName VARCHAR(255),
+        createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    2-add-dummy-users.sql: |-
+      INSERT INTO users (firstName, lastName) VALUES ('Noam', 'Chomsky');
+      INSERT INTO users (firstName, lastName) VALUES ('Elon', 'Musk');
+      INSERT INTO users (firstName, lastName) VALUES ('Jeff', 'Bezos');
+      INSERT INTO users (firstName, lastName) VALUES ('James', 'Watson');
