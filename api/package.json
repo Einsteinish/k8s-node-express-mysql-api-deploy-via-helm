@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "forever": "^3.0.2"
+    "forever": "^3.0.2",
+    "mysql2": "^2.1.0"
   }
 }

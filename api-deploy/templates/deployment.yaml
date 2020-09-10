@@ -39,3 +39,15 @@ spec:
             port: 3000
           initialDelaySeconds: 1
           periodSeconds: 5
+        env:
+        - name: DB_HOST
+          value: {{ .Release.Name }}-mysql
+        - name: DB_USER
+          value: mysql-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: api-db-pass
+              key: mysql-password
+        - name: DB_DATABASE
+          value: api_db
